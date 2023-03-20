@@ -43,21 +43,19 @@ loc_cirlce=[]
 tagged_cross=[]
 tagged_cricle=[]
 while not done:
+    print(tagged_cricle,'   ',tagged_cross)
     for i in range(1,4):
-        if all(i in tagged_cricle for i in (i, i+3, i+6)) or \
-            all(i in tagged_cricle for i in (i, i+1, i+2)) or \
-            all(i in tagged_cricle for i in (1, 5, 9)) or \
-            all(i in tagged_cricle for i in (3, 5, 7)):
+        if all(i in tagged_cricle for i in (i, i+3, i+6)) or all(i in tagged_cross for j in (1,4,7) for i in (j,j+1,j+2)) or all(i in tagged_cricle for i in (1, 5, 9)) or all(i in tagged_cricle for i in (3, 5, 7)):
             easygui.msgbox('Circle won, congratulations!')
             done = True
             break
         elif all(i in tagged_cross for i in (i, i+3, i+6)) or \
-            all(i in tagged_cross for i in (i, i+1, i+2)) or \
+            all(i in tagged_cross for j in (1,4,7) for i in (j,j+1,j+2)) or \
             all(i in tagged_cross for i in (1, 5, 9)) or \
             all(i in tagged_cross for i in (3, 5, 7)):
             easygui.msgbox('Cross won, congratulations!')
             done = True
-            break
+            break        
     if (len(tagged_cross)+len(tagged_cricle))==9:
         if easygui.ynbox('you wanna continue?', title='you messed up >:('):
             even=0
